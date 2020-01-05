@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'omidocs-client'
+    name: 'omitree-client'
   }
 </script>
 

@@ -1,5 +1,5 @@
 {
-  "name": "omidocs-client",
+  "name": "omitree-client",
   "version": "0.0.1",
   "author": "Nikita Lobach-Zhuchenko <lobach-zhuchenko@yandex.ru>",
   "description": "An electron-vue project",
@@ -19,11 +19,11 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "test": "npm run unit && npm run e2e",
     "unit": "karma start test/unit/karma.conf.js",
-    "postinstall": "npm run lint:fix"
+    "postinstall": "npm run lint:fix && electron-builder install-app-deps"
   },
   "build": {
-    "productName": "omidocs-client",
-    "appId": "com.omidocs.client",
+    "productName": "omitree-client",
+    "appId": "com.omitree.client",
     "directories": {
       "output": "build"
     },
@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "sqlite3": "^4.1.1",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",

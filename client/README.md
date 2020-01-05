@@ -1,4 +1,4 @@
-# omidocs-client
+# omitree-client
 
 > An electron-vue project
 

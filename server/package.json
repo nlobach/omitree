@@ -1,17 +1,16 @@
 {
   "name": "omitree-server",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist_ts/index.js",
   "license": "MIT",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
+    "build": "tsc && webpack",
     "prestart": "npm run build",
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jayson": "^3.2.0"
@@ -22,6 +21,7 @@
     "@types/node": "^13.1.4",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4",
-    "webpack": "^4.41.5"
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }

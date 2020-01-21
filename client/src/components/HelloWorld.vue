@@ -66,7 +66,7 @@ export default class HelloWorld extends Vue {
 
     client.request('speak', [1, 1], function (err: any, response: any) {
       if (err) throw err
-      console.log(response.result) // 2
+      // console.log(response.result) // 2
     })
   }
 }

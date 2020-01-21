@@ -1,4 +1,3 @@
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import express from "express";
 import jayson from "jayson";
@@ -9,13 +8,18 @@ dotenv.config();
 const app = express();
 const port = process.env.SERVER_PORT;
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(express.urlencoded());
+app.use(express.json());
 
-// define a route handler for the default home page
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
+// tslint:disable-next-line:no-console
+console.log(">>> " + __dirname);
+
+app.use(express.static(__dirname + "/dist/client"));
+
+// // define a route handler for the default home page
+// app.get("/", (req, res) => {
+//   res.send("Hello world!");
+// });
 
 const dogs = {
   speak: (_args: any, callback: any) => callback(null, "woof")

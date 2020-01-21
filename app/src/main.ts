@@ -1,37 +1,53 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
 
-let mainWindow: Electron.BrowserWindow;
+let clientWindow: Electron.BrowserWindow;
+let serverWindow: Electron.BrowserWindow;
 
-function createWindow() {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
+function createWindows() {
+
+  serverWindow = new BrowserWindow({
     height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-    },
     width: 800,
+    webPreferences: {
+      nodeIntegration: true
+    }
+    // show: false
+  });
+  serverWindow.webContents.openDevTools();
+
+  serverWindow.loadFile("../server.html");
+
+  serverWindow.webContents.on('did-stop-loading', () => clientWindow.loadURL("http://localhost:8080"))
+
+  // Create the browser window.
+  clientWindow = new BrowserWindow({
+    height: 600,
+    width: 800,
+    webPreferences: {
+      nodeIntegration: false
+    }
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, "../index.html"));
+  
+  clientWindow.webContents.openDevTools();
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
-  mainWindow.on("closed", () => {
+  clientWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null;
+    clientWindow = null;
   });
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", createWindow);
+app.on("ready", createWindows);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
@@ -45,8 +61,8 @@ app.on("window-all-closed", () => {
 app.on("activate", () => {
   // On OS X it"s common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    createWindow();
+  if (clientWindow === null) {
+    createWindows();
   }
 });
 

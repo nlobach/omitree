@@ -1,6 +1,9 @@
 .DS_Store
 node_modules
-/dist
+app/dist
+app/dist_ts
+server/dist
+server/dist_ts
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/

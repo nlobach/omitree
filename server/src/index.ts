@@ -11,15 +11,7 @@ const port = process.env.SERVER_PORT;
 app.use(express.urlencoded());
 app.use(express.json());
 
-// tslint:disable-next-line:no-console
-console.log(">>> " + __dirname);
-
 app.use(express.static(__dirname + "/dist/client"));
-
-// // define a route handler for the default home page
-// app.get("/", (req, res) => {
-//   res.send("Hello world!");
-// });
 
 const dogs = {
   speak: (_args: any, callback: any) => callback(null, "woof")

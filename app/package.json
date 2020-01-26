@@ -6,11 +6,13 @@
     "build": "tsc && webpack",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist/main.js"
+    "start": "npm run build && electron ./dist/main.js",
+    "postinstall": "install-app-deps"
   },
   "devDependencies": {
     "@types/node": "12.12.21",
     "electron": "^7.1.8",
+    "electron-builder": "^22.2.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4",
     "webpack": "^4.41.5",
@@ -20,6 +22,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jayson": "^3.2.0"
+    "jayson": "^3.2.0",
+    "sqlite3": "^4.1.1"
   }
 }

@@ -11,8 +11,8 @@ function createWindows() {
     width: 800,
     webPreferences: {
       nodeIntegration: true
-    }
-    // show: false
+    },
+    show: false,
   });
   serverWindow.webContents.openDevTools();
 
